@@ -24,6 +24,10 @@ python JSON_processing.py xlsx your_file.xlsx
 
 6. Upload to the browser and see the change!
 
+### How to add new metadata
+
+*  Add a column in your Excel sheet and name it like ```metadata.YOUR FIEILD.Name```. Optionally, you can add color for the field by adding another column named ```metadata.YOUR FIEILD.Color```, where ```YOUR FIELD``` is the metadata you want to add.
+
 See the attached screenshots if you have any problems.
 
 1.
