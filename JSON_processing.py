@@ -28,7 +28,7 @@ def main():
         print("Excel File generated")
 
     elif filetype == 'xlsx':
-        df = pd.read_excel(filename, index_col = None).fillna('None')
+        df = pd.read_excel(filename, index_col = None, engine='openpyxl').fillna('None')
         t = browser_df_to_json(df)
         with open(f"{filename.split('.')[0]}.json", "w") as fp:
             json.dump(t,fp)
@@ -238,16 +238,17 @@ def create_track(track_dict):
             if v != "None":
 
                 _ , k , attr_ = k.split('.')
-                if k not in json_obj["metadata"].keys():
+                if str.lower(k) not in json_obj["metadata"].keys():
                     json_obj["metadata"][str.lower(k)] = {}
 
                 json_obj["metadata"][str.lower(k)][str.lower(attr_)] = v
 
 
+ 
     for k, v in json_obj["metadata"].items():
         if len(v) == 1:
+            
             json_obj["metadata"][k] = json_obj["metadata"][k]['name']
-
 
     extras = {'isSelected': False,
                  'fileObj': '',
